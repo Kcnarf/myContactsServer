@@ -19,6 +19,7 @@ function apiAutoload($classname)
     return false;
 }
 
+//Initiate request parsing
 $request = new Request();
 
 // route the request to the right place
