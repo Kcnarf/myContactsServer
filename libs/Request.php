@@ -57,3 +57,4 @@ class Request {
         $this->parameters = $parameters;
     }
 }
+?>

@@ -7,3 +7,4 @@ class JsonView extends RootView {
         return true;
     }
 }
+?>

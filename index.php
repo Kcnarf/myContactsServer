@@ -35,3 +35,4 @@ if (class_exists($controller_name)) {
         $view->render($result);
     }
 }
+?>
