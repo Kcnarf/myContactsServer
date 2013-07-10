@@ -28,7 +28,7 @@ class ContactsController extends RootController
 				mysqli_free_result($mysqliResult);
 				mysqli_close($mysqli);
 				
-				$emberStructuredResult["message"] = "Request for object with id: " . $object_id;
+				// $emberStructuredResult["message"] = "Request for object with id: " . $object_id;
 				return $emberStructuredResult;
 			} else {
 				$mysqli = $this->opendb();
@@ -37,7 +37,7 @@ class ContactsController extends RootController
 					exit();
 				}
 				
-				$query = "SELECT contact_id FROM `contacts`";
+				$query = "SELECT * FROM `contacts`";
 				$mysqliResult = $mysqli->query($query) or die($mysqli->error.__LINE__);
 
 				// GOING THROUGH THE DATA
@@ -45,6 +45,7 @@ class ContactsController extends RootController
 				if($mysqliResult->num_rows > 0) {
 					while($row = $mysqliResult->fetch_assoc()) {
 						$arrayedRow["id"] = $row["contact_id"];
+						$arrayedRow["alias"] = $row["alias"];
 						$arrayedRows[] = $arrayedRow;
 					}
 				}
@@ -54,7 +55,7 @@ class ContactsController extends RootController
 				mysqli_free_result($mysqliResult);
 				mysqli_close($mysqli);
 				
-				$emberStructuredResult["message"] = "Request for list of objects";
+				// $emberStructuredResult["message"] = "Request for list of objects";
 				return $emberStructuredResult;
 			}
     }
@@ -62,7 +63,7 @@ class ContactsController extends RootController
 	public function postAction($request) {
 		if(isset($request->parameters)) {
 			$emberStructuredResult = $request->parameters;
-			$emberStructuredResult['message'] = "Request to create an object";
+			//$emberStructuredResult["message"] = "Request to create an object";
 			return $emberStructuredResult;
 		}
 		else {
@@ -75,7 +76,7 @@ class ContactsController extends RootController
 		if(isset($request->url_elements[2])) {
 			$object_id = (int)$request->url_elements[2];
 			$emberStructuredResult = $request->parameters;
-			$emberStructuredResult['message'] = "Request to update object with id: " . $object_id;
+			// $emberStructuredResult["message"] = "Request to update object with id: " . $object_id;
 			return $emberStructuredResult;
 		} else {
 			// do nothing, this is not a supported action
@@ -99,7 +100,7 @@ class ContactsController extends RootController
 			// CLOSE CONNECTION
 			mysqli_close($mysqli);
 			
-			$emberStructuredResult['message'] = "Request to delete object with id: " . $object_id;
+			// $emberStructuredResult["message"] = "Request to delete object with id: " . $object_id;
 			return $emberStructuredResult;
 		} else {
 			// do nothing, this is not a supported action
