@@ -10,4 +10,3 @@ class RootView {
         return $data;
     }
 }
-?>

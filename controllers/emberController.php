@@ -62,4 +62,3 @@ class EmberListController extends RootController
 		}
 	}
 }
-?>
