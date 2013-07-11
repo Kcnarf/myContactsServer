@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 11, 2013 at 09:35 PM
+-- Generation Time: Jul 11, 2013 at 10:02 PM
 -- Server version: 5.5.27
 -- PHP Version: 5.4.7
 
@@ -31,7 +31,7 @@ USE `mycontacts`;
 CREATE TABLE IF NOT EXISTS `contacts` (
   `contact_id` int(11) NOT NULL AUTO_INCREMENT,
   `alias` text CHARACTER SET latin1 COLLATE latin1_general_cs NOT NULL,
-  `favorite` tinyint(1) NOT NULL,
+  `is_favorite` tinyint(1) NOT NULL,
   `first_name` text CHARACTER SET latin1 COLLATE latin1_general_cs NOT NULL,
   `last_name` text CHARACTER SET latin1 COLLATE latin1_general_cs NOT NULL,
   `home_phone` text CHARACTER SET latin1 COLLATE latin1_general_cs NOT NULL,
@@ -40,13 +40,13 @@ CREATE TABLE IF NOT EXISTS `contacts` (
   `personal_mail` text CHARACTER SET latin1 COLLATE latin1_general_cs NOT NULL,
   `office_mail` text CHARACTER SET latin1 COLLATE latin1_general_cs NOT NULL,
   PRIMARY KEY (`contact_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data for table `contacts`
 --
 
-INSERT INTO `contacts` (`contact_id`, `alias`, `favorite`, `first_name`, `last_name`, `home_phone`, `mobile_phone`, `office_phone`, `personal_mail`, `office_mail`) VALUES
+INSERT INTO `contacts` (`contact_id`, `alias`, `is_favorite`, `first_name`, `last_name`, `home_phone`, `mobile_phone`, `office_phone`, `personal_mail`, `office_mail`) VALUES
 (1, 'Foo', 0, '', '', '', '', '', '', ''),
 (2, 'Bar', 0, '', '', '', '', '', '', '');
 
