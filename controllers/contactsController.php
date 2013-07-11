@@ -20,6 +20,14 @@ class ContactsController extends RootController
 				while($row = $mysqliResult->fetch_assoc()) {
 					$arrayedRow["id"] = $row["contact_id"];
 					$arrayedRow["alias"] = $row["alias"];
+					$arrayedRow["is_favorite"] = $row["is_favorite"];
+					$arrayedRow["first_name"] = $row["first_name"];
+					$arrayedRow["last_name"] = $row["last_name"];
+					$arrayedRow["home_phone"] = $row["home_phone"];
+					$arrayedRow["mobile_phone"] = $row["mobile_phone"];
+					$arrayedRow["office_phone"] = $row["office_phone"];
+					$arrayedRow["personal_mail"] = $row["personal_mail"];
+					$arrayedRow["office_mail"] = $row["office_mail"];
 				}
 			}
 			$emberStructuredResult["contact"] = $arrayedRow;
@@ -46,6 +54,14 @@ class ContactsController extends RootController
 				while($row = $mysqliResult->fetch_assoc()) {
 					$arrayedRow["id"] = $row["contact_id"];
 					$arrayedRow["alias"] = $row["alias"];
+					$arrayedRow["is_favorite"] = $row["is_favorite"];
+					$arrayedRow["first_name"] = $row["first_name"];
+					$arrayedRow["last_name"] = $row["last_name"];
+					$arrayedRow["home_phone"] = $row["home_phone"];
+					$arrayedRow["mobile_phone"] = $row["mobile_phone"];
+					$arrayedRow["office_phone"] = $row["office_phone"];
+					$arrayedRow["personal_mail"] = $row["personal_mail"];
+					$arrayedRow["office_mail"] = $row["office_mail"];
 					$arrayedRows[] = $arrayedRow;
 				}
 			}
