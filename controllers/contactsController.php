@@ -69,7 +69,17 @@ class ContactsController extends RootController
 				exit();
 			}
 			
-			$query =  "INSERT INTO `mycontacts`.`contacts` (`alias`) VALUES ('" . $objectProperties["contact"]->alias . "')";
+			$query =  "INSERT INTO `mycontacts`.`contacts`
+				(`alias`,`is_favorite`,`first_name`,`last_name`,`home_phone`,`mobile_phone`,`office_phone`,`personal_mail`,`office_mail`) VALUES ('"
+				. $objectProperties["contact"]->alias . "','"
+				. $objectProperties["contact"]->is_favorite . "','"
+				. $objectProperties["contact"]->first_name . "','"
+				. $objectProperties["contact"]->last_name . "','"
+				. $objectProperties["contact"]->home_phone . "','"
+				. $objectProperties["contact"]->mobile_phone . "','"
+				. $objectProperties["contact"]->office_phone . "','"
+				. $objectProperties["contact"]->personal_mail . "','"
+				. $objectProperties["contact"]->office_mail . "')";
 			$mysqli->query($query) or die($mysqli->error.__LINE__);
 			
 			$object_id = $mysqli->insert_id;
@@ -81,6 +91,14 @@ class ContactsController extends RootController
 				while($row = $mysqliResult->fetch_assoc()) {
 					$arrayedRow["id"] = $row["contact_id"];
 					$arrayedRow["alias"] = $row["alias"];
+					$arrayedRow["is_favorite"] = $row["is_favorite"];
+					$arrayedRow["first_name"] = $row["first_name"];
+					$arrayedRow["last_name"] = $row["last_name"];
+					$arrayedRow["home_phone"] = $row["home_phone"];
+					$arrayedRow["mobile_phone"] = $row["mobile_phone"];
+					$arrayedRow["office_phone"] = $row["office_phone"];
+					$arrayedRow["personal_mail"] = $row["personal_mail"];
+					$arrayedRow["office_mail"] = $row["office_mail"];
 				}
 			}
 			$emberStructuredResult["contact"] = $arrayedRow;
