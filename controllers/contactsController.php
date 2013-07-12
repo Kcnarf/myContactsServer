@@ -141,7 +141,21 @@ class ContactsController extends RootController
 				exit();
 			}
 			
-			$query =  "UPDATE `mycontacts`.`contacts` SET `alias` = '" . $objectProperties["contact"]->alias . "' WHERE `contacts`.`contact_id` = " . $object_id . ";";
+			/*
+			UPDATE  `mycontacts`.`contacts` SET  `first_name` =  'B' WHERE  `contacts`.`contact_id` =2;
+			UPDATE  `mycontacts`.`contacts` SET  `last_name` =  'C', `home_phone` =  'D' WHERE  `contacts`.`contact_id` =2;
+			*/
+			
+			$query =  "UPDATE `mycontacts`.`contacts` SET"
+				. "`alias`='" . $objectProperties["contact"]->alias . "',"
+				. "`is_favorite`='" . $objectProperties["contact"]->is_favorite . "',"
+				. "`first_name`='" . $objectProperties["contact"]->first_name . "',"
+				. "`last_name`='" . $objectProperties["contact"]->last_name . "',"
+				. "`home_phone`='" . $objectProperties["contact"]->home_phone . "',"
+				. "`mobile_phone`='" . $objectProperties["contact"]->mobile_phone . "',"
+				. "`office_phone`='" . $objectProperties["contact"]->office_phone . "',"
+				. "`personal_mail`='" . $objectProperties["contact"]->personal_mail . "',"
+				. "`office_mail`='" . $objectProperties["contact"]->office_mail . "'";
 			$mysqli->query($query) or die($mysqli->error.__LINE__);
 			
 			$query = "SELECT * FROM `contacts` WHERE `contact_id` =" . $object_id;
@@ -152,6 +166,14 @@ class ContactsController extends RootController
 				while($row = $mysqliResult->fetch_assoc()) {
 					$arrayedRow["id"] = $row["contact_id"];
 					$arrayedRow["alias"] = $row["alias"];
+					$arrayedRow["is_favorite"] = $row["is_favorite"];
+					$arrayedRow["first_name"] = $row["first_name"];
+					$arrayedRow["last_name"] = $row["last_name"];
+					$arrayedRow["home_phone"] = $row["home_phone"];
+					$arrayedRow["mobile_phone"] = $row["mobile_phone"];
+					$arrayedRow["office_phone"] = $row["office_phone"];
+					$arrayedRow["personal_mail"] = $row["personal_mail"];
+					$arrayedRow["office_mail"] = $row["office_mail"];
 				}
 			}
 			$emberStructuredResult["contact"] = $arrayedRow;
