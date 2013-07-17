@@ -155,7 +155,8 @@ class ContactsController extends RootController
 				. "`mobile_phone`='" . $objectProperties["contact"]->mobile_phone . "',"
 				. "`office_phone`='" . $objectProperties["contact"]->office_phone . "',"
 				. "`personal_mail`='" . $objectProperties["contact"]->personal_mail . "',"
-				. "`office_mail`='" . $objectProperties["contact"]->office_mail . "'";
+				. "`office_mail`='" . $objectProperties["contact"]->office_mail . "'"
+				. "WHERE `contact_id` = " . $object_id;
 			$mysqli->query($query) or die($mysqli->error.__LINE__);
 			
 			$query = "SELECT * FROM `contacts` WHERE `contact_id` =" . $object_id;
