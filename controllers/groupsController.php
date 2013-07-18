@@ -12,13 +12,13 @@ class GroupsController extends RootController
 				exit();
 			}
 			
-			$query = "SELECT * FROM `mycontacts`.`groups` WHERE `group_id` =" . $object_id;
+			$query = "SELECT * FROM `mycontacts`.`groups` WHERE `id` =" . $object_id;
 			$mysqliResult = $mysqli->query($query) or die($mysqli->error.__LINE__);
 
 			// GOING THROUGH THE DATA
 			if($mysqliResult->num_rows > 0) {
 				while($row = $mysqliResult->fetch_assoc()) {
-					$arrayedRow["id"] = $row["group_id"];
+					$arrayedRow["id"] = $row["id"];
 					$arrayedRow["name"] = $row["name"];
 				}
 			}
@@ -44,7 +44,7 @@ class GroupsController extends RootController
 			$arrayedRows = array();
 			if($mysqliResult->num_rows > 0) {
 				while($row = $mysqliResult->fetch_assoc()) {
-					$arrayedRow["id"] = $row["group_id"];
+					$arrayedRow["id"] = $row["id"];
 					$arrayedRow["name"] = $row["name"];
 					$arrayedRows[] = $arrayedRow;
 				}
@@ -73,13 +73,13 @@ class GroupsController extends RootController
 			$mysqli->query($query) or die($mysqli->error.__LINE__);
 			
 			$object_id = $mysqli->insert_id;
-			$query = "SELECT * FROM `mycontacts`.`groups` WHERE `group_id` = " . $object_id;
+			$query = "SELECT * FROM `mycontacts`.`groups` WHERE `id` = " . $object_id;
 			$mysqliResult = $mysqli->query($query) or die($mysqli->error.__LINE__);
 
 			// GOING THROUGH THE DATA
 			if($mysqliResult->num_rows > 0) {
 				while($row = $mysqliResult->fetch_assoc()) {
-					$arrayedRow["id"] = $row["group_id"];
+					$arrayedRow["id"] = $row["id"];
 					$arrayedRow["name"] = $row["name"];
 				}
 			}
@@ -107,16 +107,16 @@ class GroupsController extends RootController
 				exit();
 			}
 			
-			$query =  "UPDATE `mycontacts`.`groups` SET `name` = '" . $objectProperties["group"]->name . "' WHERE `groups`.`group_id` = " . $object_id . ";";
+			$query =  "UPDATE `mycontacts`.`groups` SET `name` = '" . $objectProperties["group"]->name . "' WHERE `groups`.`id` = " . $object_id . ";";
 			$mysqli->query($query) or die($mysqli->error.__LINE__);
 			
-			$query = "SELECT * FROM `groups` WHERE `group_id` =" . $object_id;
+			$query = "SELECT * FROM `groups` WHERE `id` =" . $object_id;
 			$mysqliResult = $mysqli->query($query) or die($mysqli->error.__LINE__);
 
 			// GOING THROUGH THE DATA
 			if($mysqliResult->num_rows > 0) {
 				while($row = $mysqliResult->fetch_assoc()) {
-					$arrayedRow["id"] = $row["group_id"];
+					$arrayedRow["id"] = $row["id"];
 					$arrayedRow["name"] = $row["name"];
 				}
 			}
@@ -144,7 +144,7 @@ class GroupsController extends RootController
 				exit();
 			}
 			
-			$query = "Delete FROM `mycontacts`.`groups` WHERE `group_id` = " . $object_id;
+			$query = "Delete FROM `mycontacts`.`groups` WHERE `id` = " . $object_id;
 			$mysqliResult = $mysqli->query($query) or die($mysqli->error.__LINE__);
 			
 			// CLOSE CONNECTION

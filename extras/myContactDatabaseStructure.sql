@@ -2,10 +2,10 @@
 -- version 3.5.2.2
 -- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Generation Time: Jul 11, 2013 at 10:02 PM
--- Server version: 5.5.27
--- PHP Version: 5.4.7
+-- Client: 127.0.0.1
+-- Généré le: Jeu 18 Juillet 2013 à 09:22
+-- Version du serveur: 5.5.27
+-- Version de PHP: 5.4.7
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,19 +17,21 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `mycontacts`
+-- Base de données: `mycontacts`
 --
+DROP DATABASE `mycontacts`;
 CREATE DATABASE `mycontacts` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
 USE `mycontacts`;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `contacts`
+-- Structure de la table `contacts`
 --
 
+DROP TABLE IF EXISTS `contacts`;
 CREATE TABLE IF NOT EXISTS `contacts` (
-  `contact_id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `alias` text CHARACTER SET latin1 COLLATE latin1_general_cs NOT NULL,
   `is_favorite` tinyint(1) NOT NULL,
   `first_name` text CHARACTER SET latin1 COLLATE latin1_general_cs NOT NULL,
@@ -39,45 +41,32 @@ CREATE TABLE IF NOT EXISTS `contacts` (
   `office_phone` text CHARACTER SET latin1 COLLATE latin1_general_cs NOT NULL,
   `personal_mail` text CHARACTER SET latin1 COLLATE latin1_general_cs NOT NULL,
   `office_mail` text CHARACTER SET latin1 COLLATE latin1_general_cs NOT NULL,
-  PRIMARY KEY (`contact_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
-
---
--- Dumping data for table `contacts`
---
-
-INSERT INTO `contacts` (`contact_id`, `alias`, `is_favorite`, `first_name`, `last_name`, `home_phone`, `mobile_phone`, `office_phone`, `personal_mail`, `office_mail`) VALUES
-(1, 'Foo', 0, '', '', '', '', '', '', ''),
-(2, 'Bar', 0, '', '', '', '', '', '', '');
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `groups`
+-- Structure de la table `groups`
 --
 
+DROP TABLE IF EXISTS `groups`;
 CREATE TABLE IF NOT EXISTS `groups` (
-  `group_id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` text CHARACTER SET latin1 COLLATE latin1_general_cs NOT NULL,
-  PRIMARY KEY (`group_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5416 ;
-
---
--- Dumping data for table `groups`
---
-
-INSERT INTO `groups` (`group_id`, `name`) VALUES
-(1, 'FooBar');
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `manytomany_contacts_groups`
+-- Structure de la table `manytomany_contacts_groups`
 --
 
+DROP TABLE IF EXISTS `manytomany_contacts_groups`;
 CREATE TABLE IF NOT EXISTS `manytomany_contacts_groups` (
-  `contactId` int(11) NOT NULL,
-  `groupId` int(11) NOT NULL
+  `contact_id` int(11) NOT NULL,
+  `group_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

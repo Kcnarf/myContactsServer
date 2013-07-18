@@ -12,13 +12,13 @@ class ContactsController extends RootController
 				exit();
 			}
 			
-			$query = "SELECT * FROM `mycontacts`.`contacts` WHERE `contact_id` =" . $object_id;
+			$query = "SELECT * FROM `mycontacts`.`contacts` WHERE `id` =" . $object_id;
 			$mysqliResult = $mysqli->query($query) or die($mysqli->error.__LINE__);
 
 			// GOING THROUGH THE DATA
 			if($mysqliResult->num_rows > 0) {
 				while($row = $mysqliResult->fetch_assoc()) {
-					$arrayedRow["id"] = $row["contact_id"];
+					$arrayedRow["id"] = $row["id"];
 					$arrayedRow["alias"] = $row["alias"];
 					$arrayedRow["is_favorite"] = $row["is_favorite"];
 					$arrayedRow["first_name"] = $row["first_name"];
@@ -52,7 +52,7 @@ class ContactsController extends RootController
 			$arrayedRows = array();
 			if($mysqliResult->num_rows > 0) {
 				while($row = $mysqliResult->fetch_assoc()) {
-					$arrayedRow["id"] = $row["contact_id"];
+					$arrayedRow["id"] = $row["id"];
 					$arrayedRow["alias"] = $row["alias"];
 					$arrayedRow["is_favorite"] = $row["is_favorite"];
 					$arrayedRow["first_name"] = $row["first_name"];
@@ -99,13 +99,13 @@ class ContactsController extends RootController
 			$mysqli->query($query) or die($mysqli->error.__LINE__);
 			
 			$object_id = $mysqli->insert_id;
-			$query = "SELECT * FROM `mycontacts`.`contacts` WHERE `contact_id` = " . $object_id;
+			$query = "SELECT * FROM `mycontacts`.`contacts` WHERE `id` = " . $object_id;
 			$mysqliResult = $mysqli->query($query) or die($mysqli->error.__LINE__);
 
 			// GOING THROUGH THE DATA
 			if($mysqliResult->num_rows > 0) {
 				while($row = $mysqliResult->fetch_assoc()) {
-					$arrayedRow["id"] = $row["contact_id"];
+					$arrayedRow["id"] = $row["id"];
 					$arrayedRow["alias"] = $row["alias"];
 					$arrayedRow["is_favorite"] = $row["is_favorite"];
 					$arrayedRow["first_name"] = $row["first_name"];
@@ -141,11 +141,6 @@ class ContactsController extends RootController
 				exit();
 			}
 			
-			/*
-			UPDATE  `mycontacts`.`contacts` SET  `first_name` =  'B' WHERE  `contacts`.`contact_id` =2;
-			UPDATE  `mycontacts`.`contacts` SET  `last_name` =  'C', `home_phone` =  'D' WHERE  `contacts`.`contact_id` =2;
-			*/
-			
 			$query =  "UPDATE `mycontacts`.`contacts` SET"
 				. "`alias`='" . $objectProperties["contact"]->alias . "',"
 				. "`is_favorite`='" . $objectProperties["contact"]->is_favorite . "',"
@@ -156,16 +151,16 @@ class ContactsController extends RootController
 				. "`office_phone`='" . $objectProperties["contact"]->office_phone . "',"
 				. "`personal_mail`='" . $objectProperties["contact"]->personal_mail . "',"
 				. "`office_mail`='" . $objectProperties["contact"]->office_mail . "'"
-				. "WHERE `contact_id` = " . $object_id;
+				. "WHERE `id` = " . $object_id;
 			$mysqli->query($query) or die($mysqli->error.__LINE__);
 			
-			$query = "SELECT * FROM `contacts` WHERE `contact_id` =" . $object_id;
+			$query = "SELECT * FROM `contacts` WHERE `id` =" . $object_id;
 			$mysqliResult = $mysqli->query($query) or die($mysqli->error.__LINE__);
 
 			// GOING THROUGH THE DATA
 			if($mysqliResult->num_rows > 0) {
 				while($row = $mysqliResult->fetch_assoc()) {
-					$arrayedRow["id"] = $row["contact_id"];
+					$arrayedRow["id"] = $row["id"];
 					$arrayedRow["alias"] = $row["alias"];
 					$arrayedRow["is_favorite"] = $row["is_favorite"];
 					$arrayedRow["first_name"] = $row["first_name"];
@@ -201,7 +196,7 @@ class ContactsController extends RootController
 				exit();
 			}
 			
-			$query = "Delete FROM `mycontacts`.`contacts` WHERE `contact_id` = " . $object_id;
+			$query = "Delete FROM `mycontacts`.`contacts` WHERE `id` = " . $object_id;
 			$mysqliResult = $mysqli->query($query) or die($mysqli->error.__LINE__);
 			
 			// CLOSE CONNECTION
