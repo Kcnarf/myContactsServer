@@ -47,7 +47,9 @@ class Contact_group_linksController extends RootController
 				exit();
 			}
 			
-			$query =  "INSERT INTO `mycontacts`.`groups` (`contact_id`,`group_id`) VALUES ('" . $objectProperties["contact_group_link"]->contact_id . "','" . $objectProperties["contact_group_link"]->contact_id . "')";
+			$query =  "INSERT INTO `mycontacts`.`contact_group_links` (`contact_id`,`group_id`) VALUES"
+				. "('" . $objectProperties["contact_group_link"]->contact_id
+				. "','" . $objectProperties["contact_group_link"]->group_id . "')";
 			$mysqli->query($query) or die($mysqli->error.__LINE__);
 			
 			$object_id = $mysqli->insert_id;
