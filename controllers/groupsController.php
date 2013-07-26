@@ -12,14 +12,26 @@ class GroupsController extends RootController
 				exit();
 			}
 			
+			
 			$query = "SELECT * FROM `mycontacts`.`groups` WHERE `id` =" . $object_id;
 			$mysqliResult = $mysqli->query($query) or die($mysqli->error.__LINE__);
-
 			// GOING THROUGH THE DATA
 			if($mysqliResult->num_rows > 0) {
 				while($row = $mysqliResult->fetch_assoc()) {
 					$arrayedRow["id"] = $row["id"];
 					$arrayedRow["name"] = $row["name"];
+					
+					$query2 = "SELECT `id` FROM `mycontacts`.`contact_group_links` WHERE `group_id` =" . $object_id;
+					$mysqliResult2 = $mysqli->query($query2) or die($mysqli->error.__LINE__);
+					// GOING THROUGH THE DATA
+					$arrayedContact_group_links = array();
+					if($mysqliResult2->num_rows > 0) {
+						while($row2 = $mysqliResult2->fetch_assoc()) {
+							$arrayedContact_group_links[] = $row2["id"];
+						}
+					}
+					$arrayedRow["contact_group_link_ids"] = $arrayedContact_group_links;
+					mysqli_free_result($mysqliResult2);
 				}
 			}
 			$emberStructuredResult["group"] = $arrayedRow;
@@ -46,6 +58,19 @@ class GroupsController extends RootController
 				while($row = $mysqliResult->fetch_assoc()) {
 					$arrayedRow["id"] = $row["id"];
 					$arrayedRow["name"] = $row["name"];
+					
+					$query2 = "SELECT `id` FROM `mycontacts`.`contact_group_links` WHERE `group_id` =" . $row["id"];
+					$mysqliResult2 = $mysqli->query($query2) or die($mysqli->error.__LINE__);
+					// GOING THROUGH THE DATA
+					$arrayedContact_group_links = array();
+					if($mysqliResult2->num_rows > 0) {
+						while($row2 = $mysqliResult2->fetch_assoc()) {
+							$arrayedContact_group_links[] = $row2["id"];
+						}
+					}
+					$arrayedRow["contact_group_link_ids"] = $arrayedContact_group_links;
+					mysqli_free_result($mysqliResult2);
+					
 					$arrayedRows[] = $arrayedRow;
 				}
 			}
@@ -81,6 +106,18 @@ class GroupsController extends RootController
 				while($row = $mysqliResult->fetch_assoc()) {
 					$arrayedRow["id"] = $row["id"];
 					$arrayedRow["name"] = $row["name"];
+					
+					$query2 = "SELECT `id` FROM `mycontacts`.`contact_group_links` WHERE `group_id` =" . $object_id;
+					$mysqliResult2 = $mysqli->query($query2) or die($mysqli->error.__LINE__);
+					// GOING THROUGH THE DATA
+					$arrayedContact_group_links = array();
+					if($mysqliResult2->num_rows > 0) {
+						while($row2 = $mysqliResult2->fetch_assoc()) {
+							$arrayedContact_group_links[] = $row2["id"];
+						}
+					}
+					$arrayedRow["contact_group_link_ids"] = $arrayedContact_group_links;
+					mysqli_free_result($mysqliResult2);
 				}
 			}
 			$emberStructuredResult["group"] = $arrayedRow;
@@ -118,6 +155,18 @@ class GroupsController extends RootController
 				while($row = $mysqliResult->fetch_assoc()) {
 					$arrayedRow["id"] = $row["id"];
 					$arrayedRow["name"] = $row["name"];
+					
+					$query2 = "SELECT `id` FROM `mycontacts`.`contact_group_links` WHERE `group_id` =" . $object_id;
+					$mysqliResult2 = $mysqli->query($query2) or die($mysqli->error.__LINE__);
+					// GOING THROUGH THE DATA
+					$arrayedContact_group_links = array();
+					if($mysqliResult2->num_rows > 0) {
+						while($row2 = $mysqliResult2->fetch_assoc()) {
+							$arrayedContact_group_links[] = $row2["id"];
+						}
+					}
+					$arrayedRow["contact_group_link_ids"] = $arrayedContact_group_links;
+					mysqli_free_result($mysqliResult2);
 				}
 			}
 			$emberStructuredResult["group"] = $arrayedRow;
