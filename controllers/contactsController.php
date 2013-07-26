@@ -28,6 +28,18 @@ class ContactsController extends RootController
 					$arrayedRow["office_phone"] = $row["office_phone"];
 					$arrayedRow["personal_mail"] = $row["personal_mail"];
 					$arrayedRow["office_mail"] = $row["office_mail"];
+					
+					$query2 = "SELECT `id` FROM `mycontacts`.`contact_group_links` WHERE `contact_id` =" . $object_id;
+					$mysqliResult2 = $mysqli->query($query2) or die($mysqli->error.__LINE__);
+					// GOING THROUGH THE DATA
+					$arrayedContact_group_links = array();
+					if($mysqliResult2->num_rows > 0) {
+						while($row2 = $mysqliResult2->fetch_assoc()) {
+							$arrayedContact_group_links[] = $row2["id"];
+						}
+					}
+					$arrayedRow["contact_group_link_ids"] = $arrayedContact_group_links;
+					mysqli_free_result($mysqliResult2);
 				}
 			}
 			$emberStructuredResult["contact"] = $arrayedRow;
@@ -62,6 +74,19 @@ class ContactsController extends RootController
 					$arrayedRow["office_phone"] = $row["office_phone"];
 					$arrayedRow["personal_mail"] = $row["personal_mail"];
 					$arrayedRow["office_mail"] = $row["office_mail"];
+					
+					$query2 = "SELECT `id` FROM `mycontacts`.`contact_group_links` WHERE `contact_id` =" . $row["id"];
+					$mysqliResult2 = $mysqli->query($query2) or die($mysqli->error.__LINE__);
+					// GOING THROUGH THE DATA
+					$arrayedContact_group_links = array();
+					if($mysqliResult2->num_rows > 0) {
+						while($row2 = $mysqliResult2->fetch_assoc()) {
+							$arrayedContact_group_links[] = $row2["id"];
+						}
+					}
+					$arrayedRow["contact_group_link_ids"] = $arrayedContact_group_links;
+					mysqli_free_result($mysqliResult2);
+					
 					$arrayedRows[] = $arrayedRow;
 				}
 			}
@@ -115,6 +140,18 @@ class ContactsController extends RootController
 					$arrayedRow["office_phone"] = $row["office_phone"];
 					$arrayedRow["personal_mail"] = $row["personal_mail"];
 					$arrayedRow["office_mail"] = $row["office_mail"];
+					
+					$query2 = "SELECT `id` FROM `mycontacts`.`contact_group_links` WHERE `contact_id` =" . $object_id;
+					$mysqliResult2 = $mysqli->query($query2) or die($mysqli->error.__LINE__);
+					// GOING THROUGH THE DATA
+					$arrayedContact_group_links = array();
+					if($mysqliResult2->num_rows > 0) {
+						while($row2 = $mysqliResult2->fetch_assoc()) {
+							$arrayedContact_group_links[] = $row2["id"];
+						}
+					}
+					$arrayedRow["contact_group_link_ids"] = $arrayedContact_group_links;
+					mysqli_free_result($mysqliResult2);
 				}
 			}
 			$emberStructuredResult["contact"] = $arrayedRow;
@@ -170,6 +207,18 @@ class ContactsController extends RootController
 					$arrayedRow["office_phone"] = $row["office_phone"];
 					$arrayedRow["personal_mail"] = $row["personal_mail"];
 					$arrayedRow["office_mail"] = $row["office_mail"];
+					
+					$query2 = "SELECT `id` FROM `mycontacts`.`contact_group_links` WHERE `contact_id` =" . $object_id;
+					$mysqliResult2 = $mysqli->query($query2) or die($mysqli->error.__LINE__);
+					// GOING THROUGH THE DATA
+					$arrayedContact_group_links = array();
+					if($mysqliResult2->num_rows > 0) {
+						while($row2 = $mysqliResult2->fetch_assoc()) {
+							$arrayedContact_group_links[] = $row2["id"];
+						}
+					}
+					$arrayedRow["contact_group_link_ids"] = $arrayedContact_group_links;
+					mysqli_free_result($mysqliResult2);
 				}
 			}
 			$emberStructuredResult["contact"] = $arrayedRow;
