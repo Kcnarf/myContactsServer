@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 23, 2013 at 05:34 PM
+-- Generation Time: Aug 03, 2013 at 11:11 AM
 -- Server version: 5.5.27
 -- PHP Version: 5.4.7
 
@@ -22,6 +22,29 @@ SET time_zone = "+00:00";
 DROP DATABASE `mycontacts`;
 CREATE DATABASE `mycontacts` DEFAULT CHARACTER SET latin1 COLLATE latin1_general_cs;
 USE `mycontacts`;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `achievements`
+--
+
+DROP TABLE IF EXISTS `achievements`;
+CREATE TABLE IF NOT EXISTS `achievements` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` text COLLATE latin1_general_cs NOT NULL,
+  `description` text COLLATE latin1_general_cs NOT NULL,
+  `achieved` tinyint(1) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COLLATE=latin1_general_cs AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `achievements`
+--
+
+INSERT INTO `achievements` (`id`, `title`, `description`, `achieved`) VALUES
+(1, 'About-er', 'Visit the ''About'' page.', 0),
+(2, 'Eager Learner', 'Visit the ''Achievements'' page.', 0);
 
 -- --------------------------------------------------------
 
@@ -56,7 +79,7 @@ CREATE TABLE IF NOT EXISTS `contacts` (
   `personal_mail` text COLLATE latin1_general_cs NOT NULL,
   `office_mail` text COLLATE latin1_general_cs NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COLLATE=latin1_general_cs AUTO_INCREMENT=15 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_general_cs AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -69,7 +92,7 @@ CREATE TABLE IF NOT EXISTS `groups` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` text COLLATE latin1_general_cs NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COLLATE=latin1_general_cs AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_general_cs AUTO_INCREMENT=1 ;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
