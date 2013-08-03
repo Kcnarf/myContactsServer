@@ -23,7 +23,7 @@ class AchievementsController extends RootController
 				while($row = $mysqliResult->fetch_assoc()) {
 					$arrayedRow["id"] = $row["id"];
 					$arrayedRow["title"] = $row["title"];
-					$arrayedRow["description"] = $row["description"];
+					$arrayedRow["how_to"] = $row["how_to"];
 					$arrayedRow["is_achieved"] = $row["is_achieved"];
 					$arrayedRows[] = $arrayedRow;
 				}
@@ -65,7 +65,7 @@ class AchievementsController extends RootController
 				while($row = $mysqliResult->fetch_assoc()) {
 					$arrayedRow["id"] = $row["id"];
 					$arrayedRow["title"] = $row["title"];
-					$arrayedRow["description"] = $row["description"];
+					$arrayedRow["how_to"] = $row["how_to"];
 					$arrayedRow["is_achieved"] = $row["is_achieved"];
 				}
 			}
