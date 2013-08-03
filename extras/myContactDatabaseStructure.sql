@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 03, 2013 at 11:11 AM
+-- Generation Time: Aug 03, 2013 at 03:42 PM
 -- Server version: 5.5.27
 -- PHP Version: 5.4.7
 
@@ -33,18 +33,28 @@ DROP TABLE IF EXISTS `achievements`;
 CREATE TABLE IF NOT EXISTS `achievements` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` text COLLATE latin1_general_cs NOT NULL,
-  `description` text COLLATE latin1_general_cs NOT NULL,
+  `how_to` text COLLATE latin1_general_cs NOT NULL,
   `is_achieved` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COLLATE=latin1_general_cs AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COLLATE=latin1_general_cs AUTO_INCREMENT=13 ;
 
 --
 -- Dumping data for table `achievements`
 --
 
-INSERT INTO `achievements` (`id`, `title`, `description`, `achieved`) VALUES
+INSERT INTO `achievements` (`id`, `title`, `how_to`, `is_achieved`) VALUES
 (1, 'About-er', 'Visit the ''About'' page.', 0),
-(2, 'Eager Learner', 'Visit the ''Achievements'' page.', 0);
+(2, 'Eager Learner', 'Visit the ''Achievements'' page.', 1),
+(3, 'I''m not alone!', 'Create a Contact', 0),
+(4, 'Memoryless', 'View the information of a Contact', 0),
+(5, 'Something''s alive out there', 'Edit and update a Contact', 0),
+(6, 'Killer', 'Delete a Contact', 0),
+(7, 'Lover', 'Set a Contact as ''favorite''', 0),
+(8, 'Classifier', 'Create a Group', 0),
+(9, 'Wording counts!', 'Update a Group', 0),
+(10, 'Mass killer', 'Delete a Group', 0),
+(11, 'Sorter', 'Assign a Contact to at least one Group', 0),
+(12, 'Researcher', 'Use the innovative Search feature', 0);
 
 -- --------------------------------------------------------
 
