@@ -24,7 +24,7 @@ class AchievementsController extends RootController
 					$arrayedRow["id"] = $row["id"];
 					$arrayedRow["title"] = $row["title"];
 					$arrayedRow["description"] = $row["description"];
-					$arrayedRow["achieved"] = $row["achieved"];
+					$arrayedRow["is_achieved"] = $row["is_achieved"];
 					$arrayedRows[] = $arrayedRow;
 				}
 			}
@@ -54,7 +54,7 @@ class AchievementsController extends RootController
 				exit();
 			}
 			
-			$query =  "UPDATE `mycontacts`.`achievements` SET `achieved` = '" . $objectProperties["achievement"]->achieved . "' WHERE `achievements`.`id` = " . $object_id . ";";
+			$query =  "UPDATE `mycontacts`.`achievements` SET `is_achieved` = '" . $objectProperties["achievement"]->is_achieved . "' WHERE `achievements`.`id` = " . $object_id . ";";
 			$mysqli->query($query) or die($mysqli->error.__LINE__);
 			
 			$query = "SELECT * FROM `achievements` WHERE `id` =" . $object_id;
@@ -66,7 +66,7 @@ class AchievementsController extends RootController
 					$arrayedRow["id"] = $row["id"];
 					$arrayedRow["title"] = $row["title"];
 					$arrayedRow["description"] = $row["description"];
-					$arrayedRow["achieved"] = $row["achieved"];
+					$arrayedRow["is_achieved"] = $row["is_achieved"];
 				}
 			}
 			$emberStructuredResult["achievement"] = $arrayedRow;

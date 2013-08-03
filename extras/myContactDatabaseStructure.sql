@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS `achievements` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` text COLLATE latin1_general_cs NOT NULL,
   `description` text COLLATE latin1_general_cs NOT NULL,
-  `achieved` tinyint(1) NOT NULL,
+  `is_achieved` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COLLATE=latin1_general_cs AUTO_INCREMENT=3 ;
 
