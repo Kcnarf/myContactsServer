@@ -252,7 +252,7 @@ class ContactsController extends RootController
 			mysqli_close($mysqli);
 			
 			//$emberStructuredResult["message"] = "Request to delete object with id: " . $object_id;
-			return $emberStructuredResult;
+			return;
 		} else {
 			// do nothing, this is not a supported action
 			break;
