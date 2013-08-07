@@ -1,6 +1,6 @@
 <?php
 
-class Contact_group_linksController extends RootController
+class AchievementsController extends RootController
 {
 	public function getAction($request) {
 		if(isset($request->url_elements[2])) {
@@ -14,7 +14,7 @@ class Contact_group_linksController extends RootController
 				exit();
 			}
 			
-			$query = "SELECT * FROM `mycontacts`.`contact_group_links`";
+			$query = "SELECT * FROM `mycontacts`.`achievements`";
 			$mysqliResult = $mysqli->query($query) or die($mysqli->error.__LINE__);
 
 			// GOING THROUGH THE DATA
@@ -22,12 +22,13 @@ class Contact_group_linksController extends RootController
 			if($mysqliResult->num_rows > 0) {
 				while($row = $mysqliResult->fetch_assoc()) {
 					$arrayedRow["id"] = $row["id"];
-					$arrayedRow["contact_id"] = $row["contact_id"];
-					$arrayedRow["group_id"] = $row["group_id"];
+					$arrayedRow["title"] = $row["title"];
+					$arrayedRow["how_to"] = $row["how_to"];
+					$arrayedRow["is_achieved"] = $row["is_achieved"];
 					$arrayedRows[] = $arrayedRow;
 				}
 			}
-			$emberStructuredResult["contact_group_links"] = $arrayedRows;	
+			$emberStructuredResult["achievements"] = $arrayedRows;	
 			
 			// CLOSE CONNECTION
 			mysqli_free_result($mysqliResult);
@@ -39,7 +40,13 @@ class Contact_group_linksController extends RootController
 	}
 
 	public function postAction($request) {
-		if(isset($request->parameters)) {
+		// do nothing, this is not a supported action
+		break;
+	}
+	
+	public function putAction($request) {
+		if(isset($request->url_elements[2])) {
+			$object_id=$request->url_elements[2];
 			$objectProperties = $request->parameters;
 			$mysqli = $this->opendb();
 			if (mysqli_connect_errno()) {
@@ -47,64 +54,37 @@ class Contact_group_linksController extends RootController
 				exit();
 			}
 			
-			$query =  "INSERT INTO `mycontacts`.`contact_group_links` (`contact_id`,`group_id`) VALUES"
-				. "('" . $objectProperties["contact_group_link"]->contact_id
-				. "','" . $objectProperties["contact_group_link"]->group_id . "')";
+			$query =  "UPDATE `mycontacts`.`achievements` SET `is_achieved` = '" . $objectProperties["achievement"]->is_achieved . "' WHERE `achievements`.`id` = " . $object_id . ";";
 			$mysqli->query($query) or die($mysqli->error.__LINE__);
 			
-			$object_id = $mysqli->insert_id;
-			$query = "SELECT * FROM `mycontacts`.`contact_group_links` WHERE `id` = " . $object_id;
+			$query = "SELECT * FROM `achievements` WHERE `id` =" . $object_id;
 			$mysqliResult = $mysqli->query($query) or die($mysqli->error.__LINE__);
 
 			// GOING THROUGH THE DATA
 			if($mysqliResult->num_rows > 0) {
 				while($row = $mysqliResult->fetch_assoc()) {
 					$arrayedRow["id"] = $row["id"];
-					$arrayedRow["contact_id"] = $row["contact_id"];
-					$arrayedRow["group_id"] = $row["group_id"];
+					$arrayedRow["title"] = $row["title"];
+					$arrayedRow["how_to"] = $row["how_to"];
+					$arrayedRow["is_achieved"] = $row["is_achieved"];
 				}
 			}
-			$emberStructuredResult["contact_group_link"] = $arrayedRow;
+			$emberStructuredResult["achievement"] = $arrayedRow;
 			
 			// CLOSE CONNECTION
 			
 			mysqli_close($mysqli);
 			mysqli_free_result($mysqliResult);
+			
 			return $emberStructuredResult;
-		}
-		else {
-			// do nothing, this is not a supported action
-			break;
-		}
-	}
-	
-	public function putAction($request) {
-		
-		// do nothing, this is not a supported action
-		break;
-	}
-	
-	public function deleteAction($request) {
-		if(isset($request->url_elements[2])) {
-			$object_id = (int)$request->url_elements[2];
-			
-			$mysqli = $this->opendb();
-			if (mysqli_connect_errno()) {
-				printf("Connect failed: %s\n", mysqli_connect_error());
-				exit();
-			}
-			
-			$query = "Delete FROM `mycontacts`.`contact_group_links` WHERE `id` = " . $object_id;
-			$mysqliResult = $mysqli->query($query) or die($mysqli->error.__LINE__);
-			
-			// CLOSE CONNECTION
-			mysqli_close($mysqli);
-			
-			//$emberStructuredResult["message"] = "Request to delete object with id: " . $object_id;
-			return;
 		} else {
 			// do nothing, this is not a supported action
 			break;
 		}
+	}
+	
+	public function deleteAction($request) {
+		// do nothing, this is not a supported action
+		break;
 	}
 }
